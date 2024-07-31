@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>自我介绍</title>
+    <style>
+        /* CSS样式 */
+        body {
+            background-color: black;
+            overflow: hidden;
+        }
+        
+        #snowflakeContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        #music {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        #content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 雪花效果容器 -->
+    <div id="snowflakeContainer"></div>
+    
+    <!-- 自我介绍内容 -->
+    <div id="content">
+        <h1>欢迎来到我的自我介绍网站！</h1>
+        <p>这是我的个人简介。</p>
+    </div>
+    
+    <script>
+        // 创建雪花效果
+        (function() {
+            var snowflakes = [],
+                canvas = document.getElementById("snowflakeContainer"),
+                ctx = canvas.getContext("2d"),
+                windowWidth = window.innerWidth,
+                windowHeight = window.innerHeight;
+            
+            // 设置画布尺寸
+            canvas.width = windowWidth;
+            canvas.height = windowHeight;
+            
+            // 创建雪花对象
+            function Snowflake() {
+                this.x = Math.random() * windowWidth;
+                this.y = Math.random() * windowHeight;
+                this.radius = Math.random() * 3 + 1;
+                this.speed = Math.random() * 3 + 1;
+                this.opacity = Math.random();
+            }
+            
+            // 绘制雪花
+            Snowflake.prototype.draw = function() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(255, 255, 255, " + this.opacity + ")";
+                ctx.fill();
+            }
+            
+            // 更新雪花位置
+            Snowflake.prototype.update = function() {
+                this.y += this.speed;
+                
+                // 如果雪花超出屏幕底部，则重置位置到屏幕顶部
+                if (this.y > windowHeight) {
+                    this.y = 0;
+                }
+                
+                this.draw();
+            }
+            
+            // 创建多个雪花对象
+            function createSnowflakes() {
+                var snowflakeCount = 100;
+                
+                for (var i = 0; i < snowflakeCount; i++) {
+                    snowflakes.push(new Snowflake());
+                }
+            }
+            
+            // 绘制和更新雪花
+            function drawSnowflakes() {
+                ctx.clearRect(0, 0, wind
+
+```json
+{
+  "error": true,
+  "message": "network error"
+}
