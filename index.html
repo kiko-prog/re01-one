@@ -1,107 +1,164 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>自我介绍</title>
-    <style>
-        /* CSS样式 */
-        body {
-            background-color: black;
-            overflow: hidden;
-        }
-        
-        #snowflakeContainer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-        
-        #music {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-        }
-        
-        #content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            font-size: 24px;
-        }
-    </style>
-</head>
-<body>
-    <!-- 雪花效果容器 -->
-    <div id="snowflakeContainer"></div>
-    
-    <!-- 自我介绍内容 -->
-    <div id="content">
-        <h1>欢迎来到我的自我介绍网站！</h1>
-        <p>这是我的个人简介。</p>
-    </div>
-    
-    <script>
-        // 创建雪花效果
-        (function() {
-            var snowflakes = [],
-                canvas = document.getElementById("snowflakeContainer"),
-                ctx = canvas.getContext("2d"),
-                windowWidth = window.innerWidth,
-                windowHeight = window.innerHeight;
-            
-            // 设置画布尺寸
-            canvas.width = windowWidth;
-            canvas.height = windowHeight;
-            
-            // 创建雪花对象
-            function Snowflake() {
-                this.x = Math.random() * windowWidth;
-                this.y = Math.random() * windowHeight;
-                this.radius = Math.random() * 3 + 1;
-                this.speed = Math.random() * 3 + 1;
-                this.opacity = Math.random();
-            }
-            
-            // 绘制雪花
-            Snowflake.prototype.draw = function() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = "rgba(255, 255, 255, " + this.opacity + ")";
-                ctx.fill();
-            }
-            
-            // 更新雪花位置
-            Snowflake.prototype.update = function() {
-                this.y += this.speed;
-                
-                // 如果雪花超出屏幕底部，则重置位置到屏幕顶部
-                if (this.y > windowHeight) {
-                    this.y = 0;
-                }
-                
-                this.draw();
-            }
-            
-            // 创建多个雪花对象
-            function createSnowflakes() {
-                var snowflakeCount = 100;
-                
-                for (var i = 0; i < snowflakeCount; i++) {
-                    snowflakes.push(new Snowflake());
-                }
-            }
-            
-            // 绘制和更新雪花
-            function drawSnowflakes() {
-                ctx.clearRect(0, 0, wind
+<html lang="en">
 
-```json
-{
-  "error": true,
-  "message": "network error"
-}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>菜谱朋友圈</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: pink; /* 设置页面背景颜色为浅灰色#f1f1f1 */
+    }
+
+   .recipe-post {
+      background-color: white; /* 每个菜谱卡片的背景颜色为白色 */
+      border: 1px solid #ddd; /* 菜谱卡片边框，颜色为淡灰色 */
+      padding: 10px; /* 内边距 10 像素 */
+      margin: 10px; /* 外边距 10 像素 */
+      width: 300px; /* 宽度 300 像素 */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* 添加一个轻微的阴影效果 */
+      display: inline-block; /* 使菜谱卡片在一行内水平排列 */
+      vertical-align: top; /* 垂直对齐方式为顶部对齐 */
+    }
+
+   .recipe-post img {
+      width: 100%; /* 图片宽度占满父元素宽度 */
+      height: 200px; /* 图片高度 100 像素 */
+      background-color: black; /* 暂时用黑色填充图片区域 */
+    }
+
+   .recipe-title {
+      font-weight: bold; /* 标题文字加粗 */
+      margin-top: 0; /* 标题顶部外边距为 0 */
+    }
+
+   .recipe-content {
+      margin-top: 5px; /* 内容距离标题 5 像素的上边距 */
+    }
+	
+	iframe {
+		display: block;
+		margin: 0 auto;
+	}
+  </style>
+</head>
+
+<body>
+  <!-- 以下开始创建菜谱卡片 -->
+  <div class="recipe-post"> 
+    <img src="images/可乐鸡翅.png" alt="" /><!-- 用于放置菜谱图片的区域 -->
+    <h3 class="recipe-title">可乐鸡翅</h3> <!-- 菜谱标题 -->
+    <p class="recipe-content">原料：可乐、鸡翅/鸡腿、油、盐、生抽<br>鸡翅焯水去腥<br>煸炒去腥增香<br>放可乐和生抽、盐，大火煮沸小火慢炖，最后大火收汁</p > <!-- 菜谱内容 -->
+  </div>
+
+  <div class="recipe-post"> 
+    <img src="images/糖醋排骨.png" alt="" />
+    <h3 class="recipe-title">糖醋排骨</h3>
+    <p class="recipe-content">原料：排骨、油、盐、生抽、白糖、陈醋<br>排骨焯水去腥<br>煸炒去腥增香<br>一勺料酒二勺生抽三勺白糖四勺陈醋<br>大火煮沸小火慢炖，最后大火收汁</p >
+  </div>
+
+  <div class="recipe-post"> 
+    <img src="images/香煎五花肉.png" alt="" />
+    <h3 class="recipe-title">香煎五花肉</h3>
+    <p class="recipe-content">原料：五花肉、盐、生抽、料酒、姜蒜<br>用盐/生抽/料酒/葱蒜腌制五花肉<br>锅中放油煎<br>搭配豆角和青椒是不错的选择</p >
+  </div>
+
+<div class="recipe-post"> 
+    <img src="images/卤猪蹄.png" alt="" />
+    <h3 class="recipe-title">卤猪蹄</h3>
+    <p class="recipe-content">原料：猪蹄、卤料、盐、生抽、料酒、姜蒜<br>猪蹄焯水去腥<br>煸炒去腥增香<br>放卤料和生抽、盐，大火煮沸小火慢炖，最后大火收汁</p >
+  </div>
+
+  <div class="recipe-post"> 
+    <img src="images/水煮米粉.png" alt="" />
+    <h3 class="recipe-title">水煮米粉</h3>
+    <p class="recipe-content">原料：米粉/面、油、盐、葱、味精、生抽<br>米粉表面的防腐剂要煮出来">米粉水煮开捞出<br>提前放盐是让面条提前有个底味">放油盐生抽煮面料<br>葱花和味精都是灵魂,味精不能加热太久">出锅前加葱花和味精<br>煎蛋/裙带菜/紫菜都是不错的选择</p >
+  </div>
+
+  <div class="recipe-post"> 
+    <img src="images/番茄炒鸡蛋.png" alt="" />
+    <h3 class="recipe-title">番茄炒鸡蛋</h3>
+    <p class="recipe-content">原料：番茄、鸡蛋、油、盐、生抽<br>选番茄要选软一点成熟的,生的番茄会酸">番茄用开水烫过去皮<br>一半煎熟一般夹生口感层次丰富">煎鸡蛋<br>番茄是可以生吃的">放入番茄炒，外熟内生很好吃</p >
+  </div>
+
+  <div class="recipe-post"> 
+    <img src="images/滑鸡.png" alt="" />
+    <h3 class="recipe-title">鸡你太美</h3>
+    <p class="recipe-content">原料：鸡腿或整治鸡、生抽、料酒、淀粉、白胡椒粉、盐、食用油<br>姜丝/生抽/料酒/淀粉/白胡椒/盐/滑的关键油腌制三十分钟">腌鸡肉<br>可以铺红枣、枸杞、虫草花">盖上大火蒸二十分钟<br>葱姜蒜生抽盐等制作酱汁">可酱汁搭配</p >
+  </div>
+
+  <div class="recipe-post"> 
+    <img src="images/鲫鱼汤.png" alt="" />
+    <h3 class="recipe-title">鲫鱼汤</h3>
+    <p class="recipe-content">原料：鲫鱼、油、盐、姜、葱、香菜<br>鲫鱼处理干净<br>煎至两面金黄<br>去腥提鲜">加姜葱、水，煮出浓白汤，加盐调味<br>香菜是灵魂">放香菜</p >
+  </div>
+
+  <div class="recipe-post"> 
+    <img src="images/蒜蓉炒生菜.png" alt="" />
+    <h3 class="recipe-title">蒜蓉炒时蔬</h3>
+    <p class="recipe-content">原料：生菜/油麦菜/空心菜/红薯叶、蒜蓉、油、盐<br>准备蒜蓉<br>锅中倒油，炒香蒜蓉<br>放入生菜快速翻炒，加盐调味</p >
+  </div>
+
+  <div class="recipe-post"> 
+    <img src="images/丝瓜鸡蛋汤.png" alt="" />
+    <h3 class="recipe-title">丝瓜鸡蛋汤</h3>
+    <p class="recipe-content">原料：丝瓜、鸡蛋、油、盐、味精<br>丝瓜去皮切好<br>打散鸡蛋<br>锅中倒油，炒丝瓜，加水煮开，倒入鸡蛋液，加盐调味</p >
+  </div>
+
+  <div class="recipe-post"> 
+    <img src="images/紫菜鸡蛋汤.png" alt="" />
+    <h3 class="recipe-title">紫菜鸡蛋汤</h3>
+    <p class="recipe-content">原料：紫菜、鸡蛋、油、盐、葱、味精<br>泡发紫菜<br>打散鸡蛋<br>锅中加水烧开，放入紫菜稍煮<br>倒入鸡蛋液形成蛋花，加盐味精调味，撒上葱花</p >
+  </div>
+  
+  <div class="recipe-post">
+    <img src="images/瘦肉菜汤.png" alt="" />
+    <h3 class="recipe-title">瘦肉菜汤</h3>
+    <p class="recipe-content">原料：枸杞叶/西洋菜/苋菜、瘦肉、油、盐、葱、味精<br>腌制瘦肉<br>下锅炒肉<br>锅中加开水，放入菜稍煮<br>加盐味精调味，撒上葱花</p >
+  </div>
+  
+  <div class="recipe-post">
+    <img src="images/紫薯西米露.png" alt="" />
+    <h3 class="recipe-title">紫薯西米露</h3>
+    <p class="recipe-content">原料：紫薯、西米、椰奶或牛奶<br>开水西米紫薯放电饭煲煮30分钟<br>中途搅拌<br>煮熟后加椰奶即可开吃</p >
+  </div>
+  
+  <div class="recipe-post">
+    <img src="images/绿豆糕.png" alt="" />
+    <h3 class="recipe-title">绿豆糕</h3>
+    <p class="recipe-content">原料：去皮绿豆、玉米油、炼乳/牛奶、抹茶粉可选<br>去皮绿豆泡一个晚上<br>加比煮饭少一点的水按煮饭按钮<br>煮熟后用米产产<br>加入玉米油，炼乳，抹茶粉，拌匀调味</p >
+  </div>
+  
+  <div class="recipe-post">
+    <img src="images/粉肠.png" alt="" />
+    <h3 class="recipe-title">粉肠</h3>
+    <p class="recipe-content">原料：粉肠、蒜、料酒、姜、油、盐、酱油<br>清洗粉肠<br>焯水<br>切成长段，改花刀<br>热锅凉油，炒香蒜，大火猛炒加酱油油盐粉肠<br>加水炒，快干的时候，倒电饭锅焖半个小时</p >
+  </div>
+  
+  <div class="recipe-post">
+    <img src="images/萝卜牛腩.png" alt="" />
+    <h3 class="recipe-title">萝卜牛腩</h3>
+    <p class="recipe-content">原料：白萝卜、牛腩、姜料酒、油盐酱油<br>切大块牛腩水开焯水3分钟<br>捞起来洗干净<br>热锅凉油炒给盐给酱油炒干水分<br>转到电饭锅焖2个小时	<br>出锅前30分钟放白萝卜</p >
+  </div>
+  
+  <div class="recipe-post">
+    <img src="images/紫苏焖鸭.png" alt="" />
+    <h3 class="recipe-title">紫苏焖鸭</h3>
+    <p class="recipe-content">原料：鸭肉、紫苏、姜料酒、油盐酱油<br>切鸭肉水开焯水<br>热锅凉油炒给紫苏盐给酱油炒干水分<br>加水焖2个小时	<br>出锅前放紫苏</p >
+  </div>
+  
+  <div class="recipe-post">
+    <img src="images/裙带菜虾仁鸡蛋豆腐汤.png" alt="" />
+    <h3 class="recipe-title">裙带菜虾仁鸡蛋豆腐汤</h3>
+    <p class="recipe-content">原料：裙带菜、虾仁、鸡蛋、豆腐、油盐味精<br>煎豆腐、鸡蛋、虾仁<br>放热水煮加盐<br>放裙带菜<br>出锅前加味精</p >
+  </div>
+  
+  
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86
+  	src="//music.163.com/outchain/player?type=3&id=2061926664&auto=1&height=66"></iframe>
+  
+</body>
+
+</html>
